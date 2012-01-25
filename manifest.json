@@ -1,0 +1,12 @@
+{
+  "name": "Block shit!",
+  "version": "1.0",
+  "description": "Block some shit",
+  "permissions": ["tabs"],
+  "content_scripts": [
+      {
+	  "matches": ["http://*/*", "https://*/*"],
+	  "js": ["jquery.js", "block_shit.js"]
+      }
+  ]
+}
