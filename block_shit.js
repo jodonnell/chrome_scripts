@@ -1,5 +1,9 @@
+var time_wasting_websites = [/reddit.com/, /facebook.com/]
+
 $(document).ready(function(){
-    if (window.location.host.match(/reddit.com/)) {
-	$('body').html('You do not like this website.');
+    for (var i = 0; i < time_wasting_websites.length; i++) {
+        if (window.location.host.match(time_wasting_websites[i])) {
+	    $('body').html('You do not like this website.');
+        }
     }
 });
