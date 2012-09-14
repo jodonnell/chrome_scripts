@@ -6,4 +6,9 @@ $(document).ready(function(){
 	    $('body').html('You do not like this website.');
         }
     }
+
+    if (window.location.href.match(/http:\/\/eztv.it\/showlist\//)) {
+        $('.forum_thread_post').find(':contains(Airing)').parent().parent().css('background-color', '#3B3');
+    }
+
 });
