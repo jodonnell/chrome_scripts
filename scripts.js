@@ -1,6 +1,15 @@
+var time_wasting_websites = [/reddit.com/, /facebook.com/]
+
+function changePandoraTitle() {
+    if ($('.artistSummary'))
+        document.title = $('.artistSummary').html() + ' - ' + $('.songTitle').html()
+}
+
 $(document).ready(function(){
     block_websites();
     eztv();
+    pandora();
+    cracked();
 });
 
 function eztv() {
@@ -16,5 +25,21 @@ function block_websites() {
         if (window.location.host.match(time_wasting_websites[i])) {
 	    $('body').html('You do not like this website.');
         }
+    }
+}
+
+
+function pandora() {
+    if (window.location.href.match(/www.pandora.com/)) {
+        window.setInterval("changePandoraTitle();", 5000);
+    }
+}
+
+function cracked() {
+    if (window.location.href.match(/www.cracked.com/)) {
+        $.get($('a.next')[0].href, function(data) {
+            var content = $(data).find('section.body section');
+            $('section.body section').append(content);
+        });
     }
 }
