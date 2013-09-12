@@ -10,7 +10,22 @@ $(document).ready(function(){
     eztv();
     pandora();
     cracked();
+    changeTitle();
 });
+
+
+function changeTitle() {
+    if (window.location.href.match(/mail.google.com/)) {
+        var inbox_title = document.title.match(/Inbox \((\d+)\)/);
+        if (inbox_title) {
+	    document.title = 'Gmail - ' + inbox_title[1];
+        }
+        else if (document.title.match(/Inbox/)){
+	    document.title = 'Gmail - 0';
+        }
+    }
+}
+
 
 function eztv() {
     if (window.location.href.match(/http:\/\/eztv.it\/showlist\//)) {
@@ -27,7 +42,6 @@ function block_websites() {
         }
     }
 }
-
 
 function pandora() {
     if (window.location.href.match(/www.pandora.com/)) {
