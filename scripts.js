@@ -37,7 +37,7 @@ function pandora() {
 
 function cracked() {
     if (window.location.href.match(/www.cracked.com/)) {
-        $.get($('a.next')[0].href, function(data) {
+        $.get($('a.next:not(".disabled")')[0].href, function(data) {
             var content = $(data).find('section.body section');
             $('section.body section').append(content);
         });
