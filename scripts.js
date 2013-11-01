@@ -5,12 +5,19 @@ function changePandoraTitle() {
         document.title = $('.artistSummary').html() + ' - ' + $('.songTitle').html()
 }
 
+function changeRdioTitle() {
+    if ($('.bottom .artist_title').length > 0 && $('.bottom .song_title').length > 0) {
+        document.title = $('.bottom .artist_title').text() + ' - ' + $('.bottom .song_title').text();
+    }
+}
+
 $(document).ready(function(){
     block_websites();
     eztv();
     pandora();
     cracked();
     changeTitle();
+    rdio();
 });
 
 
@@ -46,6 +53,12 @@ function block_websites() {
 function pandora() {
     if (window.location.href.match(/www.pandora.com/)) {
         window.setInterval("changePandoraTitle();", 5000);
+    }
+}
+
+function rdio() {
+    if (window.location.href.match(/www.rdio.com/)) {
+        window.setInterval("changeRdioTitle();", 5000);
     }
 }
 
