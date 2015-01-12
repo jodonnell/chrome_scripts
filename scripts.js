@@ -6,26 +6,11 @@ function changePandoraTitle() {
 }
 
 $(document).ready(function(){
-    block_websites();
+    //block_websites();
     eztv();
     pandora();
     cracked();
-    changeTitle();
 });
-
-
-function changeTitle() {
-    if (window.location.href.match(/mail.google.com/)) {
-        var inbox_title = document.title.match(/Inbox \((\d+)\)/);
-        if (inbox_title) {
-	    document.title = 'Gmail - ' + inbox_title[1];
-        }
-        else if (document.title.match(/Inbox/)){
-	    document.title = 'Gmail - 0';
-        }
-    }
-}
-
 
 function eztv() {
     if (window.location.href.match(/http:\/\/eztv.it\/showlist\//)) {
@@ -53,6 +38,10 @@ function cracked() {
     if (window.location.href.match(/www.cracked.com/)) {
         $.get($('a.next:not(".disabled")')[0].href, function(data) {
             var content = $(data).find('section.body section');
+            var images = $(content).find('img[data-img]');
+            $(images).each(function (i, image) {
+				        $(image).attr('src', $(image).attr('data-img'));
+            });
             $('section.body section').append(content);
         });
     }
